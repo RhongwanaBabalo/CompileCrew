@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="CompileCrew1.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Best Results System</title>
+    <!-- Tailwind & Chart.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-item { transition: all 0.3s ease; }
+        .sidebar-item:hover { background-color: #3b82f6; transform: translateX(4px); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <form id="form1" runat="server">
+
+        <!-- Top Navbar -->
+        <nav class="bg-blue-600 text-white shadow-lg">
+            <div class="container mx-auto px-4 flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                        <span class="text-blue-600 font-bold text-xl">BR</span>
+                    </div>
+                    <h1 class="text-2xl font-bold">Best Results Manufacturing</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <asp:Label ID="lblUserName" runat="server" CssClass="text-blue-100 font-medium"></asp:Label>
+                    <asp:Label ID="lblUserRole" runat="server" CssClass="text-blue-200 text-sm block"></asp:Label>
+                    <asp:Button ID="btnLogout" runat="server" Text="Logout"
+                        CssClass="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg"
+                        OnClick="btnLogout_Click" />
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Layout -->
+        <div class="flex">
+
+            <!-- Sidebar -->
+            <aside class="w-64 bg-gray-800 text-white min-h-screen">
+                <div class="p-6">
+                    <h2 class="text-lg font-semibold mb-6">System Modules</h2>
+                    <nav class="space-y-2">
+                        <asp:HyperLink NavigateUrl="~/Dashboard.aspx" Text=" Dashboard" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                        <asp:HyperLink NavigateUrl="~/Orders.aspx" Text=" Order Management" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                        <asp:HyperLink NavigateUrl="~/Batches.aspx" Text=" Batch Planning" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                        <asp:HyperLink NavigateUrl="~/Formulas.aspx" Text=" Product Formulas" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                        <asp:HyperLink NavigateUrl="~/CostingTool.aspx" Text=" Costing Calculator" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                        <asp:HyperLink NavigateUrl="~/Invoice.aspx" Text=" Invoice Generator" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                        <asp:HyperLink NavigateUrl="~/PurchaseOrders.aspx" Text=" Purchase Orders" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                        <asp:HyperLink NavigateUrl="~/Delivery.aspx" Text=" Delivery Tracking" CssClass="sidebar-item block px-4 py-3 rounded-lg hover:bg-gray-700" runat="server" />
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Main Page Content -->
+            <main class="flex-1 p-6">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </main>
+        </div>
+    </form>
+</body>
+</html>
